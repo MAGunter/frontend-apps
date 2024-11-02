@@ -8,7 +8,7 @@ document.getElementById('searchButton').addEventListener('click', () => {
             .then(data => {
                 console.log("Data fetched:", data);
                 localStorage.setItem('searchResults', JSON.stringify(data.results));
-                window.location.href = '../search-page/index.html';
+                window.location.href = '../search-page/results.html';
             })
             .catch(error => console.error('Error fetching data:', error));
     } else {
