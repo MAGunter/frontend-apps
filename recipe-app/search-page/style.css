@@ -1,99 +1,52 @@
-/* Reset */
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
-  }
-  
-  /* Background and Container Styles */
-  body {
-	background-color: #3d64e6;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	min-height: 100vh;
-	margin: 0;
-  }
-  
-  .container {
-	background-color: #ffffff;
-	width: 80vw;
-	max-width: 37.5em;
-	padding: 2em;
-	border-radius: 0.62em;
-	box-shadow: 0 1.25em 1.8em rgba(8, 21, 65, 0.25);
-	text-align: center;
-  }
-  
-  /* Title */
-  .container h2 {
-	font-weight: 600;
-	color: #222a43;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	margin-bottom: 1.5em;
-  }
-  
-  /* Search Bar */
-  .search-wrapper {
-	display: grid;
-	grid-template-columns: 9fr 3fr;
-	gap: 1.25em;
-	margin-bottom: 1.5em;
-  }
-  
-  .search-wrapper input {
-	font-size: 1em;
-	padding: 0.5em;
-	border: none;
-	border-bottom: 2px solid #3d64e6;
-	outline: none;
-	color: #222a43;
-  }
-  
-  .search-wrapper button {
-	font-size: 1em;
-	background-color: #3d64e6;
-	color: #ffffff;
-	padding: 0.8em 0;
-	border: none;
-	border-radius: 1.5em;
-	cursor: pointer;
-  }
-  
-  /* Recipe Cards */
-  .recipes-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	gap: 1em;
-  }
-  
-  .recipe-card {
-	background-color: #ffffff;
-	border: 1px solid #ddd;
-	border-radius: 0.62em;
-	padding: 1em;
-	box-shadow: 0 0.5em 1em rgba(8, 21, 65, 0.1);
-	text-align: center;
-	color: #222a43;
-  }
-  
-  .recipe-card img {
-	width: 100%;
-	height: auto;
-	border-radius: 0.5em;
-	margin-bottom: 0.5em;
-  }
-  
-  .recipe-card h3 {
-	font-size: 1.1em;
-	color: #3d64e6;
-	margin-bottom: 0.5em;
-  }
-  
-  .recipe-card p {
-	font-size: 0.9em;
-	color: #5d6274;
-  }
-  
+
+.header {
+    background-color: #3A3F47;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.menu p, .search-results h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #E1B168;
+}
+
+.results-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #292E36;
+}
+
+#results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.recipe-item {
+    background-color: #3A3F47;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+    width: 200px;
+    color: #fff;
+}
+
+.recipe-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.recipe-item h3 {
+    font-size: 18px;
+    color: #E1B168;
+}
+
