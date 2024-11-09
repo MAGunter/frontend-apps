@@ -45,7 +45,7 @@ table {
 	border-spacing: 0;
 }
 section{
-    margin-top: 200px;
+    padding-top: 20px;
 }
 .block{
     display: flex;
@@ -62,6 +62,9 @@ section{
     justify-content: center;
     max-width: 600px;
 }
+.main-name{
+    display: flex;
+}
 .name{
     padding: 10px;
     font-size: 2rem;
@@ -70,13 +73,16 @@ section{
     border-radius: 0.5rem;
     width: 200px;
     height: 40px;
-    background-color: #54416d;
+    background-color: #6a6fb0;
+}
+#search::placeholder{
+    color:#31255a;
 }
 #btn{
     border-radius: 0.5rem;
-    background-color: #54416d;
+    background-color: #6a6fb0;
     width: 70px;
-    height: 30px;
+    height: 40px;
 }
 .country{
     display: flex;
@@ -85,4 +91,40 @@ section{
 .city{
     display: flex;
     gap: 5px;
+}
+img{
+    width: 50px;
+    height: 50px;
+}
+.switch-celsius{
+    display: flex;
+    gap: 5px;
+}
+.country h3{
+    font-style: italic;
+}
+.city h3{
+    font-style: italic;
+}
+.temperature{
+    display: flex;
+    gap: 5px;
+}
+.humidity{
+    display: flex;
+    gap: 5px;
+}
+.wind{
+    display: flex;
+    gap: 5px;
+}
+#location-btn{
+    border-radius: 0.4rem;
+    background-color:#6a6fb0;
+}
+.forecast{
+    display: flex;
+    margin: auto;
+    padding: 30px;
+    justify-content: center;
 }
