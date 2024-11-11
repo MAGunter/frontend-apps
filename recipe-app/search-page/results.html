@@ -23,6 +23,12 @@
   <main>
     <section class="results-section">
       <div id="results-container"></div>
+      <div class="recipe-item">
+        <h3>${result.title}</h3>
+        <img src="${result.image}" alt="${result.title}" />
+        <span class="favorite-icon" data-id="${result.id}"></span>
+        <div class="star"></div>
+    </div>
     </section>
   </main>
   <script src="results.js"></script>
