@@ -149,25 +149,33 @@ function setGenre(){
 }
 
 function showMovies(data){
-    main.innerHTML = '';
+  main.innerHTML = '';
+  data.forEach(movie => {
+      const movieElement = document.createElement('div');
+      const {title, poster_path, vote_average, overview} = movie;
+      movieElement.classList.add('movie');
+      movieElement.setAttribute('data-movie-id', movie.id);
+      movieElement.innerHTML = `
+      <img src="${poster_path? IMG_URL + poster_path: "http://via.placeholder.com/1080x1580"}" alt="${title}">
+          <div class="movie-info">
+              <h3>${title}</h3>
+              <span class="${getColor(vote_average)}">${vote_average}</span>
+          </div>
+          <div class="overview">
+              <h3>Overview</h3>
+              ${overview}
+          </div>
+      `;
+      main.appendChild(movieElement);
+  });
 
-    data.forEach(movie => {
-        const movieElement = document.createElement('div');
-        const {title, poster_path, vote_average, overview} = movie;
-        movieElement.classList.add('movie');
-        movieElement.innerHTML = `
-        <img src="${poster_path? IMG_URL + poster_path: "http://via.placeholder.com/1080x1580"}" alt="${title}">
-            <div class="movie-info">
-                <h3>${title}</h3>
-                <span class="${getColor(vote_average)}">${vote_average}</span>
-            </div>
-            <div class="overview">
-                <h3>Overview</h3>
-                ${overview}
-            </div>
-        `
-        main.appendChild(movieElement);
+  // Добавление обработчика кликов
+  document.querySelectorAll('.movie').forEach(card => {
+    card.addEventListener('click', function () {
+        const movieId = this.getAttribute('data-movie-id');
+        showMovieDetails(movieId);
     });
+});
 }
 
 function getColor(vote){
@@ -210,3 +218,64 @@ form.addEventListener('submit', (e) => {
         getMovies(API_URL)
     }
 })
+
+const modal = document.getElementById("movieModal");
+const closeModal = document.getElementsByClassName("close")[0];
+const movieTitle = document.getElementById("movieTitle");
+const moviePoster = document.getElementById("moviePoster");
+const movieOverview = document.getElementById("movieOverview");
+const movieRating = document.getElementById("movieRating");
+const movieTrailer = document.getElementById("movieTrailer");
+
+async function showMovieDetails(movieId) {
+  const apiKey = "9a619654e39ac564765adc61836d569f";
+
+  const movieDetailsResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
+  const movieData = await movieDetailsResponse.json();
+
+  movieTitle.innerText = movieData.title;
+  moviePoster.src = `https://image.tmdb.org/t/p/w500${movieData.poster_path}`;
+  movieOverview.innerText = movieData.overview;
+  movieRating.innerText = `Rating: ${movieData.vote_average}`;
+
+  const movieVideosResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`);
+  const videosData = await movieVideosResponse.json();
+  const trailer = videosData.results.find(video => video.type === "Trailer" && video.site === "YouTube");
+
+  if (trailer) {
+      movieTrailer.href = `https://www.youtube.com/watch?v=${trailer.key}`;
+      movieTrailer.style.display = "block";
+  } else {
+      movieTrailer.style.display = "none";
+  }
+
+  modal.style.display = "block";
+}
+
+closeModal.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target === modal) {
+      modal.style.display = "none";
+  }
+}
+
+
+closeModal.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
+document.querySelectorAll(".movie-card").forEach(card => {
+    card.addEventListener("click", function() {
+        const movieId = this.getAttribute("data-movie-id");
+        showMovieDetails(movieId);
+    });
+});
