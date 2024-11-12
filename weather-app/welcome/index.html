@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,10 @@
 </head>
 <body>
     <main>
+        <!-- Main section containing weather info and controls -->
         <section>
             <div class="block">
+                <!-- App title and icon -->
                 <div class="main-name">
                     <div class="weather-icon">
                         <img src="../images/icon.png" alt="Weather Icon">
@@ -18,16 +20,20 @@
                         <h1>Weather Application</h1>
                     </div>
                 </div>
+                <!-- Input for city search -->
                 <div class="search">
                     <input type="text" id="search" placeholder="Search by city">
                 </div>
+                <!-- Button to trigger weather search -->
                 <div class="button">
                     <button type="submit" id="btn">Show Weather</button>
                 </div>
+                <!-- Temperature unit switch -->
                 <div class="switch-celsius">
                     <label for="unit-toggle"><p>Switch to: </p></label>
                     <input type="checkbox" id="unit-toggle"> <p>Fahrenheit</p>
                 </div>
+                <!-- Display for country and city names -->
                 <div class="country">
                     <h3>Country:</h3>
                     <p>Kazakhstan</p>
@@ -36,6 +42,7 @@
                     <h3>City: </h3>
                     <p>Almaty</p>
                 </div>
+                <!-- Weather data placeholders -->
                 <div class="description">
                     <p>Weather details will be displayed here.</p>
                 </div>
@@ -51,6 +58,7 @@
                     <h3>Wind Speed: </h3>
                     <p>...</p>
                 </div>
+                <!-- Button for using user's current location -->
                 <button id="location-btn">Use My Location</button>
             </div>
         </section>

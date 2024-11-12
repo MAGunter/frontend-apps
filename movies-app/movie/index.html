@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <!-- Sets the character encoding and viewport for responsive design, linking the stylesheet -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Movies App</title>
 </head>
 <body>
+    <!-- Header containing the search bar form -->
     <header class="header">
         <form id="form">
             <input type="text" placeholder="search" id="search" class="search">
         </form>
     </header>
+    <!-- Div containing tags for quick genre selection -->
     <div id="tags">
-        <div class="tag">Action</div>
-        <div class="tag">Comedy</div>
-        <div class="tag">Adventure</div>
-        <div class="tag">Drama</div>
+        <div class="tag">Detective</div>
+        <div class="tag">Big show</div>
+        <div class="tag">Anime</div>
+        <div class="tag">Romantic</div>
     </div>
     <main id="main">
+        <!-- Sample movie elements for display with poster, title, rating, and overview -->
         <div class="movie">
             <img src="../images/movie.jpg" alt="">
             <div class="movie-info">
@@ -30,6 +34,7 @@
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex tenetur beatae dolorum eos cumque possimus iste culpa, labore deleniti atque amet quibusdam eveniet quasi illum ullam natus eius, doloremque hic.
             </div>
         </div>
+        <!-- Additional movie sample entries for different ratings and styles -->
         <div class="movie">
             <img src="../images/movie.jpg" alt="">
             <div class="movie-info">
@@ -53,6 +58,7 @@
             </div>
         </div>
     </main>
+    <!-- Modal for detailed movie view -->
     <div id="movieModal">
         <span class="close">&times;</span>
         <div class="movie-modal-content">
@@ -69,6 +75,7 @@
         </div>
     </div>
 
+    <!-- JavaScript file for dynamic functionality -->
     <script src="script.js"></script>
 </body>
 </html>

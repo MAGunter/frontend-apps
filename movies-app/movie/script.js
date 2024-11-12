@@ -1,9 +1,11 @@
+// API constants for fetching movies and images
 const API_KEY = 'api_key=9a619654e39ac564765adc61836d569f';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = BASE_URL + '/search/movie?' + API_KEY;
 
+// List of genres for filtering movies
 const genres = [
     {
       "id": 28,
@@ -82,11 +84,14 @@ const genres = [
       "name": "Western"
     }
 ]
+
+// DOM elements for genre tags, main content, search form, and search input
 const tagsEl = document.getElementById('tags');
 const main = document.getElementById('main');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 
+// Function to highlight selected genre tags
 function highlightSelection(){
   const tags = document.querySelectorAll('.tag');
   tags.forEach(tag => {
@@ -101,8 +106,10 @@ function highlightSelection(){
   }
 }
 
+// Initial movie load based on default API URL
 getMovies(API_URL);
 
+// Function to fetch movies based on a URL
 function getMovies(url){
     fetch(url).then(res => res.json()).then(data => {
         console.log(data.results);
@@ -118,6 +125,7 @@ var selectedGenre = [];
 
 setGenre();
 
+// Function to display genres as clickable tags
 function setGenre(){
     tagsEl.innerHTML = '';
     genres.forEach(genre => {
@@ -148,6 +156,7 @@ function setGenre(){
     })
 }
 
+// Function to display movies with details in cards
 function showMovies(data){
   main.innerHTML = '';
   data.forEach(movie => {
@@ -169,7 +178,6 @@ function showMovies(data){
       main.appendChild(movieElement);
   });
 
-  // Добавление обработчика кликов
   document.querySelectorAll('.movie').forEach(card => {
     card.addEventListener('click', function () {
         const movieId = this.getAttribute('data-movie-id');
@@ -178,6 +186,7 @@ function showMovies(data){
 });
 }
 
+// Function to set rating color based on score
 function getColor(vote){
     if(vote >= 8){
         return 'green'
@@ -188,6 +197,7 @@ function getColor(vote){
     }
 }
 
+// Function to add a "clear" button for genres
 function clearBtn(){
   let clearBtn = document.getElementById('clear');
   if(clearBtn){
@@ -207,6 +217,7 @@ function clearBtn(){
   }
 }
 
+// Search form event listener to fetch movies based on search input
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const searchTerm = search.value;
@@ -227,6 +238,7 @@ const movieOverview = document.getElementById("movieOverview");
 const movieRating = document.getElementById("movieRating");
 const movieTrailer = document.getElementById("movieTrailer");
 
+// Function to display movie details in a modal window
 async function showMovieDetails(movieId) {
   const apiKey = "9a619654e39ac564765adc61836d569f";
 

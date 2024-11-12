@@ -178,7 +178,7 @@ main{
     justify-content: center;
     text-align: center;
     align-items: center;
-    margin-left: 70px;
+    margin-left: 0px;
 }
 #movieModal img {
     width: 300px;

@@ -12,21 +12,19 @@ const windElement = document.querySelector('.wind p');
 const unitToggle = document.getElementById('unit-toggle');
 const forecastSection = document.querySelector('.forecast');
 
-// Default unit: Celsius
-let currentUnit = 'metric';  // For Celsius
+let currentUnit = 'metric'; 
 let currentCity = 'Almaty';
 
-// Initial load
 getWeather(currentCity);
 
-// Search event
+// Event listener for search button to get weather by city name
 searchButton.addEventListener('click', () => {
     const cityName = searchInput.value || currentCity;
-    currentCity = cityName;  // Update the current city
+    currentCity = cityName;
     getWeather(cityName);
 });
 
-// Geolocation event
+// Event listener for location button to get weather by user's geolocation
 document.getElementById('location-btn').addEventListener('click', () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -39,25 +37,25 @@ document.getElementById('location-btn').addEventListener('click', () => {
     }
 });
 
-// Unit toggle event
+// Event listener for unit toggle to switch between Celsius and Fahrenheit
 unitToggle.addEventListener('change', () => {
-    currentUnit = unitToggle.checked ? 'imperial' : 'metric';  // Toggle between Fahrenheit and Celsius
+    currentUnit = unitToggle.checked ? 'imperial' : 'metric';
     getWeather(currentCity);
 });
 
-// Fetch weather by city
+// Function to fetch and display current weather by city name
 function getWeather(city) {
     const apiUrl = `${BASE_URL}weather?q=${city}&appid=${API_KEY}&units=${currentUnit}`;
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
             showCurrentWeather(data);
-            getForecast(city);  // Get 5-day forecast
+            getForecast(city);
         })
         .catch(error => console.error('Error fetching weather data:', error));
 }
 
-// Fetch weather by coordinates (geolocation)
+// Function to fetch weather by geographic coordinates
 function getWeatherByCoordinates(lat, lon) {
     const apiUrl = `${BASE_URL}weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=${currentUnit}`;
     fetch(apiUrl)
@@ -69,7 +67,7 @@ function getWeatherByCoordinates(lat, lon) {
         .catch(error => console.error('Error fetching weather data by location:', error));
 }
 
-// Fetch 5-day forecast by city
+// Function to fetch and display 5-day weather forecast by city name
 function getForecast(city) {
     const apiUrl = `${BASE_URL}forecast?q=${city}&appid=${API_KEY}&units=${currentUnit}`;
     fetch(apiUrl)
@@ -80,7 +78,7 @@ function getForecast(city) {
         .catch(error => console.error('Error fetching forecast:', error));
 }
 
-// Fetch 5-day forecast by coordinates (geolocation)
+// Function to fetch 5-day forecast by geographic coordinates
 function getForecastByCoordinates(lat, lon) {
     const apiUrl = `${BASE_URL}forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=${currentUnit}`;
     fetch(apiUrl)
@@ -91,7 +89,7 @@ function getForecastByCoordinates(lat, lon) {
         .catch(error => console.error('Error fetching forecast by location:', error));
 }
 
-// Display current weather
+// Function to display current weather data on the page
 function showCurrentWeather(data) {
     cityElement.textContent = data.name;
     countryElement.textContent = data.sys.country;
@@ -104,11 +102,11 @@ function showCurrentWeather(data) {
     document.querySelector('.weather-icon').src = `http://openweathermap.org/img/wn/${iconCode}.png`;
 }
 
-// Display 5-day forecast
+// Function to display 5-day forecast data on the page
 function showForecast(data) {
-    forecastSection.innerHTML = '';  // Clear previous forecast
+    forecastSection.innerHTML = '';
     data.list.forEach((item, index) => {
-        if (index % 8 === 0) {  // Show one forecast for each day (every 8th entry is a new day)
+        if (index % 8 === 0) {
             const dayForecast = document.createElement('div');
             dayForecast.classList.add('day-forecast');
 
@@ -129,11 +127,3 @@ function showForecast(data) {
         }
     });
 }
-
-// Handle auto-suggest (this is a simple example, no API used)
-searchInput.addEventListener('input', () => {
-    const query = searchInput.value;
-    if (query.length > 2) {
-        // Suggest cities here (using static list or API)
-    }
-});

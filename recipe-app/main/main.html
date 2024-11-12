@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <title>Recipe Application</title>
+</head>
+<body>
+  <header class="header">
+    <nav>
+      <div class="visit"><p>Call - 123 456</p></div>
+      <div class="logo-img"><img src="../images/logo.svg" alt="logo"></div>
+      <div class="favo"><button id="favoritesButton">Favorites</button></div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Main Search Section -->
+    <section id="searchSection">
+      <div class="search">
+        <h1>Welcome to our <span>sweet</span><br>cafe!</h1>
+        <input type="text" id="searchInput" placeholder="Search for recipes..." />
+        <button id="searchButton">Search</button>
+      </div>
+      <div class="back-img">
+        <img src="../images/Frame.png" alt="back image">
+      </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section id="resultsSection" style="display: none;">
+      <button onclick="showSection('searchSection')">← Return</button>
+      <h2>Search Results</h2>
+      <div id="resultsContainer"></div>
+    </section>
+
+    <!-- Favorites Section -->
+    <section id="favoritesSection" style="display: none;">
+      <button onclick="showSection('searchSection')">← Return</button>
+      <h2>Your Favorites</h2>
+      <div id="favoritesContainer"></div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
